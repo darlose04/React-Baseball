@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Navbar from "./components/layout/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
@@ -15,8 +15,11 @@ import Teams from "./components/pages/teams/Teams";
 class App extends Component {
   state = {
     hitters: [],
+    hitter: {},
     starters: [],
+    starter: {},
     relievers: [],
+    reliever: {},
     loading: false
   };
 
@@ -30,6 +33,7 @@ class App extends Component {
   };
 
   render() {
+    const { loading, hitters } = this.state;
     return (
       <Router>
         <div className='App'>
@@ -39,8 +43,14 @@ class App extends Component {
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
               <Route exact path='/players' component={Players} />
-              <Route exact path='/hitters' component={Hitters} />
               <Route exact path='/teams' component={Teams} />
+              <Route
+                exact
+                path='/hitters'
+                render={props => (
+                  <Hitters loading={loading} hitters={hitters} />
+                )}
+              />
             </Switch>
           </div>
         </div>
