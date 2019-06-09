@@ -1,14 +1,26 @@
 // this will be the page that maps through and displays a hitter item for each hitter. It will be a table
-import React, { Component } from "react";
+import React from "react";
+import Spinner from "../../../layout/Spinner";
+import HitterItem from "./HitterItem";
+import PropTypes from "prop-types";
 
-class Hitters extends Component {
-  render() {
+const Hitters = ({ hitters, loading }) => {
+  if (loading) {
+    return <Spinner />;
+  } else {
     return (
       <div>
-        <h1>This is the page that will display the hitters in a table</h1>
+        {hitters.map(hitter => {
+          <HitterItem key={hitter.player_id} hitter={hitter} />;
+        })}
       </div>
     );
   }
-}
+};
+
+Hitters.propTypes = {
+  hitters: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired
+};
 
 export default Hitters;
