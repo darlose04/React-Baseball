@@ -23,6 +23,9 @@ class Navbar extends Component {
             <Link to='/standings'>Standings</Link>
           </li>
           <li>
+            <a href='https://www.reddit.com/r/baseball/'>r/baseball</a>
+          </li>
+          <li>
             <Link to='/about'>About</Link>
           </li>
         </ul>
