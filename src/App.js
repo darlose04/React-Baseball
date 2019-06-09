@@ -8,6 +8,8 @@ import About from "./components/pages/About";
 import Players from "./components/pages/Players";
 import Hitters from "./components/pages/players/hitters/Hitters";
 
+import Teams from "./components/pages/teams/Teams";
+
 // import "./App.css";
 
 class App extends Component {
@@ -38,6 +40,7 @@ class App extends Component {
               <Route exact path='/about' component={About} />
               <Route exact path='/players' component={Players} />
               <Route exact path='/hitters' component={Hitters} />
+              <Route exact path='/teams' component={Teams} />
             </Switch>
           </div>
         </div>
