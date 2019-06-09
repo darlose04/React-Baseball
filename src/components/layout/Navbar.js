@@ -5,7 +5,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav
-        className='navbar navbar-expand-sm navbar-dark bg-primary mb-3'
+        className='navbar navbar-expand-sm navbar-dark bg-primary mb-2'
         style={{ color: "#fff" }}
       >
         <div className='container'>
@@ -34,13 +34,31 @@ class Navbar extends Component {
                 Standings
               </Link>
             </li>
-            <li className='nav-item'>
+            <li className='nav-item dropdown'>
               <a
-                className='nav-link text-light'
-                href='https://www.reddit.com/r/baseball/'
+                href='#'
+                className='nav-link dropdown-toggle text-light'
+                data-toggle='dropdown'
               >
-                r/baseball
+                Links
               </a>
+              <div className='dropdown-menu'>
+                <a
+                  href='https://www.reddit.com/r/baseball/'
+                  className='dropdown-item'
+                >
+                  r/baseball
+                </a>
+                <a href='https://www.fangraphs.com' className='dropdown-item'>
+                  Fangraphs
+                </a>
+                <a
+                  href='https://www.baseball-reference.com/'
+                  className='dropdown-item'
+                >
+                  Baseball Reference
+                </a>
+              </div>
             </li>
             <li className='nav-item'>
               <Link className='nav-link text-light' to='/about'>
