@@ -1,8 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import HitterItem from "./HitterItem";
+import Spinner from "../../layout/Spinner";
+import PropTypes from "prop-types";
 
-class Hitters extends Component {
-  render() {
+const Hitters = ({ hitters, loading }) => {
+  if (loading) {
+    return <Spinner />;
+  } else {
     return (
       <div>
         <table className='table' style={{ fontSize: "12px" }}>
@@ -33,13 +37,18 @@ class Hitters extends Component {
               <th>WAR</th>
             </tr>
           </thead>
-          {this.props.hitters.map(hitter => (
+          {hitters.map(hitter => (
             <HitterItem key={hitter.player_id} hitter={hitter} />
           ))}
         </table>
       </div>
     );
   }
-}
+};
+
+Hitters.propTypes = {
+  hitters: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired
+};
 
 export default Hitters;
