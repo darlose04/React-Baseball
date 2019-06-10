@@ -6,7 +6,7 @@ import axios from "axios";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 
-import HitterItem from "./components/pages/hitters/HitterItem";
+import Hitters from "./components/pages/hitters/Hitters";
 
 // import "./App.css";
 
@@ -20,7 +20,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
-              <Route exact path='/hitters' component={HitterItem} />
+              <Route exact path='/hitters' component={Hitters} />
             </Switch>
           </div>
         </div>
