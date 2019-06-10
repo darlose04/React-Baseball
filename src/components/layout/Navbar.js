@@ -24,10 +24,25 @@ class Navbar extends Component {
                 Teams
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link className='nav-link text-light' to='/players'>
+            <li className='nav-item dropdown'>
+              <a
+                href='#'
+                className='nav-link dropdown-toggle text-light'
+                data-toggle='dropdown'
+              >
                 Players
-              </Link>
+              </a>
+              <div className='dropdown-menu'>
+                <Link to='/hitters' className='dropdown-item'>
+                  Hitters
+                </Link>
+                <Link to='/starters' className='dropdown-item'>
+                  Starters
+                </Link>
+                <Link to='/relievers' className='dropdown-item'>
+                  Relievers
+                </Link>
+              </div>
             </li>
             <li className='nav-item'>
               <Link className='nav-link text-light' to='/standings'>
