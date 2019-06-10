@@ -6,6 +6,8 @@ import axios from "axios";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 
+import HitterItem from "./components/pages/hitters/HitterItem";
+
 // import "./App.css";
 
 class App extends Component {
@@ -14,6 +16,7 @@ class App extends Component {
       <Router>
         <div className='App'>
           <Navbar />
+          <HitterItem />
           <div className='container'>
             <Switch>
               <Route exact path='/' component={Home} />
