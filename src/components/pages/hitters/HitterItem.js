@@ -108,6 +108,31 @@ class HitterItem extends Component {
 
   render() {
     let i = 1;
+    const {
+      name,
+      team,
+      games,
+      plate_appearances,
+      homeruns,
+      runs,
+      rbi,
+      sb,
+      bb_perc,
+      k_perc,
+      iso,
+      babip,
+      avg,
+      obp,
+      slg,
+      ops,
+      wOBA,
+      wRC_plus,
+      bsr,
+      off,
+      def,
+      war
+    } = this.state;
+
     return (
       <div className='container'>
         <table className='table' style={{ fontSize: "12px" }}>
