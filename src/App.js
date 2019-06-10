@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Navbar from "./components/layout/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
@@ -11,6 +11,19 @@ import Hitters from "./components/pages/hitters/Hitters";
 // import "./App.css";
 
 class App extends Component {
+  state = {
+    hitters: [],
+    loading: false
+  };
+
+  async componentDidMount() {
+    this.setState({ loading: true });
+
+    const res = await axios.get("http://localhost:4000/batting/2018");
+
+    this.setState({ hitters: res.data, loading: false });
+  }
+
   render() {
     return (
       <Router>
@@ -20,7 +33,16 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
-              <Route exact path='/hitters' component={Hitters} />
+              <Route
+                exact
+                path='/hitters'
+                render={props => (
+                  <Hitters
+                    loading={this.state.loading}
+                    hitters={this.state.hitters}
+                  />
+                )}
+              />
             </Switch>
           </div>
         </div>
