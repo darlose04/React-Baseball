@@ -3,7 +3,14 @@ import HitterItem from "./HitterItem";
 import Spinner from "../../layout/Spinner";
 import PropTypes from "prop-types";
 
-const Hitters = ({ hitters, loading }) => {
+const Hitters = ({
+  hitters2014,
+  hitters2015,
+  hitters2016,
+  hitters2017,
+  hitters2018,
+  loading
+}) => {
   if (loading) {
     return <Spinner />;
   } else {
@@ -37,7 +44,7 @@ const Hitters = ({ hitters, loading }) => {
               <th>WAR</th>
             </tr>
           </thead>
-          {hitters.map(hitter => (
+          {hitters2015.map(hitter => (
             <HitterItem key={hitter.player_id} hitter={hitter} />
           ))}
         </table>
@@ -47,7 +54,11 @@ const Hitters = ({ hitters, loading }) => {
 };
 
 Hitters.propTypes = {
-  hitters: PropTypes.array.isRequired,
+  hitters2014: PropTypes.array.isRequired,
+  hitters2015: PropTypes.array.isRequired,
+  hitters2016: PropTypes.array.isRequired,
+  hitters2017: PropTypes.array.isRequired,
+  hitters2018: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 };
 
