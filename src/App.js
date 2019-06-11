@@ -14,8 +14,8 @@ class App extends Component {
   state = {
     hitters2014: [],
     hitters2015: [],
-    hitters2015: [],
     hitters2016: [],
+    hitters2017: [],
     hitters2018: [],
     loading: false
   };
@@ -23,41 +23,20 @@ class App extends Component {
   async componentDidMount() {
     this.setState({ loading: true });
 
-    const res = await axios.get("http://localhost:4000/api/batting/2014");
+    const res14 = await axios.get("http://localhost:4000/api/batting/2014");
+    const res15 = await axios.get("http://localhost:4000/api/batting/2014");
+    const res16 = await axios.get("http://localhost:4000/api/batting/2014");
+    const res17 = await axios.get("http://localhost:4000/api/batting/2014");
+    const res18 = await axios.get("http://localhost:4000/api/batting/2014");
 
-    this.setState({ hitters2014: res.data, loading: false });
-  }
-
-  async componentDidMount() {
-    this.setState({ loading: true });
-
-    const res = await axios.get("http://localhost:4000/api/batting/2015");
-
-    this.setState({ hitters2015: res.data, loading: false });
-  }
-
-  async componentDidMount() {
-    this.setState({ loading: true });
-
-    const res = await axios.get("http://localhost:4000/api/batting/2016");
-
-    this.setState({ hitters2016: res.data, loading: false });
-  }
-
-  async componentDidMount() {
-    this.setState({ loading: true });
-
-    const res = await axios.get("http://localhost:4000/api/batting/2017");
-
-    this.setState({ hitters2017: res.data, loading: false });
-  }
-
-  async componentDidMount() {
-    this.setState({ loading: true });
-
-    const res = await axios.get("http://localhost:4000/api/batting/2018");
-
-    this.setState({ hitters2018: res.data, loading: false });
+    this.setState({
+      hitters2014: res14.data,
+      hitters2015: res15.data,
+      hitters2016: res16.data,
+      hitters2017: res17.data,
+      hitters2018: res18.data,
+      loading: false
+    });
   }
 
   render() {
