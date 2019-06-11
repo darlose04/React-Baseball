@@ -5,6 +5,12 @@ class Search extends Component {
     text: ""
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.searchPlayers(this.state.text);
+    this.setState({ text: "" });
+  };
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -21,7 +27,11 @@ class Search extends Component {
             value={this.state.text}
             onChange={this.onChange}
           />
-          <input type='submit' value='Search' className='btn btn-dark' />
+          <input
+            type='submit'
+            value='Search'
+            className='btn btn-outline-light'
+          />
         </form>
       </div>
     );
