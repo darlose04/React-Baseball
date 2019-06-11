@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Navbar from "./components/layout/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
+import YearSelect from "./components/layout/YearSelect";
 
 import Hitters from "./components/pages/hitters/Hitters";
+import Search from "./components/layout/Search";
 
 // import "./App.css";
 
@@ -52,14 +54,17 @@ class App extends Component {
                 exact
                 path='/hitters'
                 render={props => (
-                  <Hitters
-                    loading={this.state.loading}
-                    hitters2014={this.state.hitters2014}
-                    hitters2015={this.state.hitters2015}
-                    hitters2016={this.state.hitters2016}
-                    hitters2017={this.state.hitters2017}
-                    hitters2018={this.state.hitters2018}
-                  />
+                  <Fragment>
+                    <YearSelect />
+                    <Hitters
+                      loading={this.state.loading}
+                      hitters2014={this.state.hitters2014}
+                      hitters2015={this.state.hitters2015}
+                      hitters2016={this.state.hitters2016}
+                      hitters2017={this.state.hitters2017}
+                      hitters2018={this.state.hitters2018}
+                    />
+                  </Fragment>
                 )}
               />
             </Switch>
