@@ -5,7 +5,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav
-        className='navbar navbar-expand-sm navbar-dark bg-primary mb-2'
+        className='navbar navbar-expand-sm navbar-dark bg-primary'
         style={{ color: "#fff" }}
       >
         <div className='container'>
@@ -76,10 +76,19 @@ class Navbar extends Component {
               </div>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link text-light' to='/about'>
+              <Link className='nav-link text-light mr-2' to='/about'>
                 About
               </Link>
             </li>
+            <form className='form-inline ml-auto'>
+              <input
+                className='form-control mr-2'
+                type='text'
+                name='text'
+                placeholder='Search Players...'
+              />
+              <button className='btn btn-dark'>Search</button>
+            </form>
           </ul>
         </div>
       </nav>
