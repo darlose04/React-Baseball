@@ -1,9 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import Search from "./Search";
 
 class Navbar extends Component {
+  state = {
+    hitters: [],
+    loading: false
+  };
+
+  // search baseball players
+  searchPlayers = async text => {
+    this.setState({ loading: true });
+
+    const res = await axios.get(
+      `http://localhost:4000/api/batting/2018/${text}`
+    );
+
+    this.setState({ hitters: res.data.items, loading: false });
+  };
+
   render() {
     return (
       <nav
@@ -82,7 +99,7 @@ class Navbar extends Component {
                 About
               </Link>
             </li>
-            <Search />
+            <Search searchPlayers={this.searchPlayers} />
           </ul>
         </div>
       </nav>

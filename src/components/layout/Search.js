@@ -1,8 +1,13 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Search extends Component {
   state = {
     text: ""
+  };
+
+  static propTypes = {
+    searchPlayers: PropTypes.func.isRequired
   };
 
   onSubmit = e => {
