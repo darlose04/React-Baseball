@@ -16,6 +16,32 @@ const Hitters = ({
   } else {
     return (
       <div>
+        <div className='dropdown mt-3 mb-3'>
+          <button
+            className='btn btn-primary dropdown-toggle'
+            type='button'
+            data-toggle='dropdown'
+          >
+            Select Year
+          </button>
+          <div className='dropdown-menu'>
+            <a href='#' className='dropdown-item'>
+              2014
+            </a>
+            <a href='#' className='dropdown-item'>
+              2015
+            </a>
+            <a href='#' className='dropdown-item'>
+              2016
+            </a>
+            <a href='#' className='dropdown-item'>
+              2017
+            </a>
+            <a href='#' className='dropdown-item'>
+              2018
+            </a>
+          </div>
+        </div>
         <table className='table' style={{ fontSize: "12px" }}>
           <thead>
             <tr>
