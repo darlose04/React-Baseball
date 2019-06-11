@@ -24,10 +24,10 @@ class App extends Component {
     this.setState({ loading: true });
 
     const res14 = await axios.get("http://localhost:4000/api/batting/2014");
-    const res15 = await axios.get("http://localhost:4000/api/batting/2014");
-    const res16 = await axios.get("http://localhost:4000/api/batting/2014");
-    const res17 = await axios.get("http://localhost:4000/api/batting/2014");
-    const res18 = await axios.get("http://localhost:4000/api/batting/2014");
+    const res15 = await axios.get("http://localhost:4000/api/batting/2015");
+    const res16 = await axios.get("http://localhost:4000/api/batting/2016");
+    const res17 = await axios.get("http://localhost:4000/api/batting/2017");
+    const res18 = await axios.get("http://localhost:4000/api/batting/2018");
 
     this.setState({
       hitters2014: res14.data,
