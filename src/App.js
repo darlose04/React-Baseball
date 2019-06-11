@@ -19,7 +19,7 @@ class App extends Component {
   async componentDidMount() {
     this.setState({ loading: true });
 
-    const res = await axios.get("http://localhost:4000/batting/2018");
+    const res = await axios.get("http://localhost:4000/api/batting/2018");
 
     this.setState({ hitters: res.data, loading: false });
   }
