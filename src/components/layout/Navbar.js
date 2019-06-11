@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import Search from "./Search";
+
 class Navbar extends Component {
   render() {
     return (
@@ -80,15 +82,7 @@ class Navbar extends Component {
                 About
               </Link>
             </li>
-            <form className='form-inline ml-auto'>
-              <input
-                className='form-control mr-2'
-                type='text'
-                name='text'
-                placeholder='Search Players...'
-              />
-              <button className='btn btn-dark'>Search</button>
-            </form>
+            <Search />
           </ul>
         </div>
       </nav>
