@@ -1,34 +1,44 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class YearSelect extends Component {
+  state = {
+    year: ""
+  };
+
+  static propTypes = {
+    getYear: PropTypes.func.isRequired
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.getYear(this.state.year);
+    this.setState({ year: "" });
+  };
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     return (
-      <div className='dropdown mt-3 mb-3'>
-        <button
-          className='btn btn-primary dropdown-toggle'
-          type='button'
-          data-toggle='dropdown'
-        >
-          Select Year
-        </button>
-        <div className='dropdown-menu'>
-          <Link to='/hitters/2014' className='dropdown-item'>
-            2014
-          </Link>
-          <Link to='/hitters/2015' className='dropdown-item'>
-            2015
-          </Link>
-          <Link to='/hitters/2016' className='dropdown-item'>
-            2016
-          </Link>
-          <Link to='/hitters/2017' className='dropdown-item'>
-            2017
-          </Link>
-          <Link to='/hitters/2018' className='dropdown-item'>
-            2018
-          </Link>
-        </div>
+      <div>
+        <form onSubmit={this.onSubmit} className='form-inline ml-auto my-3'>
+          <input
+            className='form-control mr-2'
+            type='text'
+            name='year'
+            placeholder='Input Year (2014-2018)'
+            value={this.state.year}
+            onChange={this.onChange}
+          />
+          <input
+            type='submit'
+            value='Submit'
+            className='btn btn-outline-primary'
+          />
+        </form>
       </div>
     );
   }
