@@ -10,10 +10,12 @@ const Hitters = ({ hitters, loading }) => {
   } else {
     return (
       <div>
-        <table className='table' style={{ fontSize: "12px" }}>
-          <thead>
+        <table
+          className='table table-sm table-striped table-bordered table-hover'
+          style={{ fontSize: "12px" }}
+        >
+          <thead className='thead-dark'>
             <tr>
-              {/* <th>Rank</th> */}
               <th>Name</th>
               <th>Team</th>
               <th>Games</th>

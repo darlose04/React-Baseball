@@ -29,7 +29,6 @@ const HitterItem = props => {
   return (
     <tbody>
       <tr>
-        {/* <th>{i++}</th> */}
         <td>{name}</td>
         <td>{team}</td>
         <td>{games}</td>
