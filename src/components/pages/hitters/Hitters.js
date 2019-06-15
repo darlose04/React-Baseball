@@ -4,15 +4,7 @@ import HitterItem from "./HitterItem";
 import Spinner from "../../layout/Spinner";
 import PropTypes from "prop-types";
 
-const Hitters = ({
-  hitters,
-  // hitters2014,
-  // hitters2015,
-  // hitters2016,
-  // hitters2017,
-  // hitters2018,
-  loading
-}) => {
+const Hitters = ({ hitters, loading }) => {
   if (loading) {
     return <Spinner />;
   } else {
@@ -57,11 +49,6 @@ const Hitters = ({
 
 Hitters.propTypes = {
   hitters: PropTypes.array.isRequired,
-  // hitters2014: PropTypes.array.isRequired,
-  // hitters2015: PropTypes.array.isRequired,
-  // hitters2016: PropTypes.array.isRequired,
-  // hitters2017: PropTypes.array.isRequired,
-  // hitters2018: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired
 };
 
