@@ -11,7 +11,7 @@ const Hitters = ({ hitters, loading }) => {
     return (
       <div>
         <table
-          className='table table-sm table-striped table-bordered table-hover'
+          className='table table-sm table-striped table-bordered table-hover table-responsive-sm'
           style={{ fontSize: "12px" }}
         >
           <thead className='thead-dark'>
