@@ -14,7 +14,7 @@ class YearSelect extends Component {
   onSubmit = e => {
     e.preventDefault();
     this.props.getYear(this.state.year);
-    this.setState({ year: "" });
+    // this.setState({ year: "" });
   };
 
   onChange = e => {
