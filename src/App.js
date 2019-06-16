@@ -19,7 +19,9 @@ class App extends Component {
 
   getYear = async year => {
     this.setState({ loading: true });
-    const res = await axios.get(`http://localhost:4000/api/batting/${year}`);
+    const res = await axios.get(
+      `https://baseballapi.herokuapp.com/api/batting/${year}`
+    );
     this.setState({ hitters: res.data, loading: false });
   };
 
