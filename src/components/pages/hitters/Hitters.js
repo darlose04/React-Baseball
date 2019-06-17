@@ -1,5 +1,6 @@
 import React from "react";
-import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+// import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+// import BootstrapTable from "react-bootstrap-table-next";
 
 import HitterItem from "./HitterItem";
 import Spinner from "../../layout/Spinner";
@@ -9,7 +10,6 @@ const Hitters = ({ hitters, loading }) => {
   if (loading) {
     return <Spinner />;
   } else {
-    /*
     return (
       <div>
         <table
@@ -47,36 +47,6 @@ const Hitters = ({ hitters, loading }) => {
           ))}
         </table>
       </div>
-    );
-    */
-    return (
-      <BootstrapTable data={hitters} striped hover>
-        <TableHeaderColumn isKey dataField='player_id'>
-          Player ID
-        </TableHeaderColumn>
-        <TableHeaderColumn dataField='name'>Name</TableHeaderColumn>
-        <TableHeaderColumn dataField='team'>Team</TableHeaderColumn>
-        <TableHeaderColumn dataField='games'>Games</TableHeaderColumn>
-        <TableHeaderColumn dataField='plate_appearances'>PA</TableHeaderColumn>
-        <TableHeaderColumn dataField='runs'>Runs</TableHeaderColumn>
-        <TableHeaderColumn dataField='homeruns'>HR</TableHeaderColumn>
-        <TableHeaderColumn dataField='rbi'>RBI</TableHeaderColumn>
-        <TableHeaderColumn dataField='sb'>SB</TableHeaderColumn>
-        <TableHeaderColumn dataField='bb_perc'>BB %</TableHeaderColumn>
-        <TableHeaderColumn dataField='k_perc'>K %</TableHeaderColumn>
-        <TableHeaderColumn dataField='iso'>ISO</TableHeaderColumn>
-        <TableHeaderColumn dataField='babip'>BABIP</TableHeaderColumn>
-        <TableHeaderColumn dataField='avg'>AVG</TableHeaderColumn>
-        <TableHeaderColumn dataField='obp'>OBP</TableHeaderColumn>
-        <TableHeaderColumn dataField='slg'>SLG</TableHeaderColumn>
-        <TableHeaderColumn dataField='ops'>OPS</TableHeaderColumn>
-        <TableHeaderColumn dataField='wOBA'>wOBA</TableHeaderColumn>
-        <TableHeaderColumn dataField='wRC_plus'>wRC+</TableHeaderColumn>
-        <TableHeaderColumn dataField='bsr'>BsR</TableHeaderColumn>
-        <TableHeaderColumn dataField='pff'>Off</TableHeaderColumn>
-        <TableHeaderColumn dataField='def'>Def</TableHeaderColumn>
-        <TableHeaderColumn dataField='war'>WAR</TableHeaderColumn>
-      </BootstrapTable>
     );
   }
 };
