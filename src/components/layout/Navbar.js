@@ -15,7 +15,7 @@ class Navbar extends Component {
     this.setState({ loading: true });
 
     const res = await axios.get(
-      `http://localhost:4000/api/batting/2018/${text}`
+      `https://baseballapi.herokuapp.com/api/batting/2014/players/${text}`
     );
 
     this.setState({ hitters: res.data.items, loading: false });
