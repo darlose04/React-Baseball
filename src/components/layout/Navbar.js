@@ -2,24 +2,22 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import Search from "./Search";
-
 class Navbar extends Component {
-  state = {
-    hitters: [],
-    loading: false
-  };
+  // state = {
+  //   hitters: [],
+  //   loading: false
+  // };
 
   // search baseball players
-  searchPlayers = async text => {
-    this.setState({ loading: true });
+  // searchPlayers = async text => {
+  //   this.setState({ loading: true });
 
-    const res = await axios.get(
-      `https://baseballapi.herokuapp.com/api/batting/2014/players/${text}`
-    );
+  //   const res = await axios.get(
+  //     `https://baseballapi.herokuapp.com/api/batting/2014/players/${text}`
+  //   );
 
-    this.setState({ hitters: res.data.items, loading: false });
-  };
+  //   this.setState({ hitters: res.data.items, loading: false });
+  // };
 
   render() {
     return (
@@ -99,7 +97,7 @@ class Navbar extends Component {
                 About
               </Link>
             </li>
-            <Search searchPlayers={this.searchPlayers} />
+            {/* <Search searchPlayers={this.searchPlayers} /> */}
           </ul>
         </div>
       </nav>
