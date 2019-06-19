@@ -19,6 +19,7 @@ const Hitters = ({ hitters, loading }) => {
           <thead className='thead-dark'>
             <tr>
               <th>Name</th>
+              <th>Year</th>
               <th>Team</th>
               <th>Games</th>
               <th>PA</th>

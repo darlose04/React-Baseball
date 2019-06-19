@@ -3,6 +3,7 @@ import React from "react";
 const HitterItem = props => {
   const {
     name,
+    year,
     team,
     games,
     plate_appearances,
@@ -30,6 +31,7 @@ const HitterItem = props => {
     <tbody>
       <tr>
         <td>{name}</td>
+        <td>{year}</td>
         <td>{team}</td>
         <td>{games}</td>
         <td>{plate_appearances}</td>
