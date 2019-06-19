@@ -22,20 +22,23 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.onSubmit} className='form-inline ml-auto'>
-          <input
-            className='form-control mr-2'
-            type='text'
-            name='text'
-            placeholder='Search Players...'
-            value={this.state.text}
-            onChange={this.onChange}
-          />
+      <div className='mt-5'>
+        <form onSubmit={this.onSubmit}>
+          <div className='form-group'>
+            <input
+              className='form-control'
+              type='text'
+              name='text'
+              placeholder='Search Players...'
+              value={this.state.text}
+              onChange={this.onChange}
+            />
+          </div>
+
           <input
             type='submit'
-            value='Search'
-            className='btn btn-outline-light'
+            value='Search Hitters'
+            className='btn btn-primary btn-block'
           />
         </form>
       </div>
