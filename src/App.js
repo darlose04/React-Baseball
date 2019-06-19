@@ -8,6 +8,7 @@ import About from "./components/pages/About";
 
 import Hitters from "./components/pages/hitters/Hitters";
 import YearSelect from "./components/layout/YearSelect";
+import Search from "./components/layout/Search";
 
 // import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
@@ -27,6 +28,16 @@ class App extends Component {
     this.setState({ hitters: res.data, loading: false });
   };
 
+  searchPlayers = async player => {
+    this.setState({ loading: true });
+
+    const res = await axios.get(
+      `https://baseballapi.herokuapp.com/api/batting/players/${player}`
+    );
+
+    this.setState({ hitters: res.data, loading: false });
+  };
+
   render() {
     return (
       <Router>
@@ -34,7 +45,19 @@ class App extends Component {
           <Navbar />
           <div className='container'>
             <Switch>
-              <Route exact path='/' component={Home} />
+              <Route
+                exact
+                path='/'
+                render={props => (
+                  <Fragment>
+                    <Search searchPlayers={this.searchPlayers} />
+                    <Hitters
+                      loading={this.state.loading}
+                      hitters={this.state.hitters}
+                    />
+                  </Fragment>
+                )}
+              />
               <Route exact path='/about' component={About} />
               <Route
                 exact
