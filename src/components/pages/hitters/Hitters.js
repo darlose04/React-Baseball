@@ -7,7 +7,9 @@ import Spinner from "../../layout/Spinner";
 import PropTypes from "prop-types";
 
 const Hitters = ({ hitters, loading }) => {
-  if (loading) {
+  if (hitters.length === 0) {
+    return <div />;
+  } else if (loading) {
     return <Spinner />;
   } else {
     return (
@@ -43,6 +45,7 @@ const Hitters = ({ hitters, loading }) => {
               <th>WAR</th>
             </tr>
           </thead>
+
           {hitters.map(hitter => (
             <HitterItem key={hitter.player_id} hitter={hitter} />
           ))}
