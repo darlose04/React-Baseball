@@ -22,7 +22,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className='mt-5'>
+      <div className='my-5'>
         <form onSubmit={this.onSubmit}>
           <div className='form-group'>
             <input
