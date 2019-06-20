@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 class Navbar extends Component {
   // state = {
@@ -43,7 +42,7 @@ class Navbar extends Component {
             </li>
             <li className='nav-item dropdown'>
               <a
-                href='#'
+                href='!#'
                 className='nav-link dropdown-toggle text-light'
                 data-toggle='dropdown'
               >
@@ -68,7 +67,7 @@ class Navbar extends Component {
             </li>
             <li className='nav-item dropdown'>
               <a
-                href='#'
+                href='!#'
                 className='nav-link dropdown-toggle text-light'
                 data-toggle='dropdown'
               >
