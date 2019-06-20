@@ -7,12 +7,12 @@ class Search extends Component {
   };
 
   static propTypes = {
-    searchPlayers: PropTypes.func.isRequired
+    searchHitters: PropTypes.func.isRequired
   };
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.searchPlayers(this.state.text);
+    this.props.searchHitters(this.state.text);
     this.setState({ text: "" });
   };
 
