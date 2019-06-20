@@ -7,7 +7,9 @@ class YearSelect extends Component {
   };
 
   static propTypes = {
-    getYear: PropTypes.func.isRequired
+    getYear: PropTypes.func.isRequired,
+    clearYear: PropTypes.func.isRequired,
+    showTableClear: PropTypes.bool.isRequired
   };
 
   onSubmit = e => {
@@ -21,9 +23,10 @@ class YearSelect extends Component {
   };
 
   render() {
+    const { showTableClear, clearYear } = this.props;
     return (
-      <div>
-        <form onSubmit={this.onSubmit} className='form-inline ml-auto my-3'>
+      <div className='my-3'>
+        <form onSubmit={this.onSubmit} className='d-inline form-inline ml-auto'>
           <input
             className='form-control mr-2'
             type='text'
@@ -38,6 +41,14 @@ class YearSelect extends Component {
             className='btn btn-outline-primary'
           />
         </form>
+        {showTableClear && (
+          <button
+            className='d-inline btn btn-outline-dark ml-2'
+            onClick={clearYear}
+          >
+            Clear
+          </button>
+        )}
       </div>
     );
   }
