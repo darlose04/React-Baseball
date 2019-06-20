@@ -53,6 +53,7 @@ class App extends Component {
   };
 
   render() {
+    const { hitterSearch, hitters, loading } = this.state;
     return (
       <Router>
         <div className='App'>
@@ -69,19 +70,14 @@ class App extends Component {
                     <Search
                       searchHitters={this.searchHitters}
                       clearPlayers={this.clearPlayers}
-                      showClear={
-                        this.state.hitterSearch.length > 0 ? true : false
-                      }
+                      showClear={hitterSearch.length > 0 ? true : false}
                     />
                     <HitterSearch
-                      loading={this.state.loading}
-                      hitterSearch={this.state.hitterSearch}
+                      loading={loading}
+                      hitterSearch={hitterSearch}
                     />
                     <YearSelect getYear={this.getYear} />
-                    <Hitters
-                      loading={this.state.loading}
-                      hitters={this.state.hitters}
-                    />
+                    <Hitters loading={loading} hitters={hitters} />
                   </Fragment>
                 )}
               />
