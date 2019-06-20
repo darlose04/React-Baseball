@@ -1,6 +1,6 @@
 import React from "react";
 
-import HitterItem from "../hitters/HitterItem";
+import HitterSearchItem from "./HitterSearchItem";
 import Spinner from "../../layout/Spinner";
 import PropTypes from "prop-types";
 
@@ -12,13 +12,13 @@ const HitterSearch = ({ hitterSearch, loading }) => {
   } else {
     return (
       <div>
+        <h2>{hitterSearch[0].name}</h2>
         <table
           className='table table-sm table-striped table-bordered table-hover table-responsive-sm'
           style={{ fontSize: "12px" }}
         >
           <thead className='thead-dark'>
             <tr>
-              <th>Name</th>
               <th>Year</th>
               <th>Team</th>
               <th>Games</th>
@@ -45,7 +45,7 @@ const HitterSearch = ({ hitterSearch, loading }) => {
           </thead>
 
           {hitterSearch.map(hitter => (
-            <HitterItem key={hitter.player_id} hitter={hitter} />
+            <HitterSearchItem key={hitter.player_id} hitter={hitter} />
           ))}
         </table>
       </div>
