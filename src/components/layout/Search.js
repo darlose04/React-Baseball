@@ -7,12 +7,15 @@ class Search extends Component {
   };
 
   static propTypes = {
-    searchHitters: PropTypes.func.isRequired
+    searchHitters: PropTypes.func.isRequired,
+    searchPitchers: PropTypes.func.isRequired
   };
 
   onSubmit = e => {
     e.preventDefault();
     this.props.searchHitters(this.state.text);
+    this.props.searchPitchers(this.state.text);
+
     this.setState({ text: "" });
   };
 
@@ -34,10 +37,9 @@ class Search extends Component {
               onChange={this.onChange}
             />
           </div>
-
           <input
             type='submit'
-            value='Search Hitters'
+            value='Search Players'
             className='btn btn-primary btn-block'
           />
         </form>

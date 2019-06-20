@@ -64,10 +64,12 @@ class App extends Component {
                       searchHitters={this.searchHitters}
                       searchPitchers={this.searchPitchers}
                     />
+
                     <HitterSearch
                       loading={this.state.loading}
                       hitterSearch={this.state.hitterSearch}
                     />
+
                     <PitcherSearch
                       loading={this.state.loading}
                       pitcherSearch={this.state.pitcherSearch}
