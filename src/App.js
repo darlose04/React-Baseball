@@ -10,6 +10,7 @@ import Hitters from "./components/pages/hitters/Hitters";
 import HitterSearch from "./components/pages/searches/HitterSearch";
 import YearSelect from "./components/layout/YearSelect";
 import Search from "./components/layout/Search";
+import PitcherSearch from "./components/pages/searches/PitcherSearch";
 
 // import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
@@ -31,14 +32,20 @@ class App extends Component {
     this.setState({ hitters: res.data, loading: false });
   };
 
-  searchHitters = async player => {
+  searchHitters = async hitter => {
     this.setState({ loading: true });
-
     const res = await axios.get(
-      `https://baseballapi.herokuapp.com/api/batting/players/${player}`
+      `https://baseballapi.herokuapp.com/api/batting/players/${hitter}`
     );
-
     this.setState({ hitterSearch: res.data, loading: false });
+  };
+
+  searchPitchers = async pitcher => {
+    this.setState({ loading: true });
+    const res = await axios.get(
+      `https://baseballapi.herokuapp.com/api/pitching/players/${pitcher}`
+    );
+    this.setState({ pitcherSearch: res.data, loading: false });
   };
 
   render() {
@@ -53,10 +60,17 @@ class App extends Component {
                 path='/'
                 render={props => (
                   <Fragment>
-                    <Search searchHitters={this.searchHitters} />
+                    <Search
+                      searchHitters={this.searchHitters}
+                      searchPitchers={this.searchPitchers}
+                    />
                     <HitterSearch
                       loading={this.state.loading}
                       hitterSearch={this.state.hitterSearch}
+                    />
+                    <PitcherSearch
+                      loading={this.state.loading}
+                      pitcherSearch={this.state.pitcherSearch}
                     />
                   </Fragment>
                 )}
