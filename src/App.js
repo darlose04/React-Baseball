@@ -52,8 +52,75 @@ class App extends Component {
     this.setState({ hitterSearch: [], loading: false });
   };
 
+  showFields = () => {
+    if (
+      this.state.hitterSearch.length === 0 &&
+      this.state.hitters.length === 0
+    ) {
+      return (
+        <Route
+          exact
+          path='/hitters'
+          render={props => (
+            <Fragment>
+              <Search
+                searchHitters={this.searchHitters}
+                clearPlayers={this.clearPlayers}
+                showClear={this.state.hitterSearch.length > 0 ? true : false}
+              />
+              <HitterSearch
+                loading={this.state.loading}
+                hitterSearch={this.state.hitterSearch}
+              />
+              <YearSelect getYear={this.getYear} />
+              <Hitters
+                loading={this.state.loading}
+                hitters={this.state.hitters}
+              />
+            </Fragment>
+          )}
+        />
+      );
+    } else if (this.state.hitterSearch.length > 0) {
+      return (
+        <Route
+          exact
+          path='/hitters'
+          render={props => (
+            <Fragment>
+              <Search
+                searchHitters={this.searchHitters}
+                clearPlayers={this.clearPlayers}
+                showClear={this.state.hitterSearch.length > 0 ? true : false}
+              />
+              <HitterSearch
+                loading={this.state.loading}
+                hitterSearch={this.state.hitterSearch}
+              />
+            </Fragment>
+          )}
+        />
+      );
+    } else if (this.state.hitters.length > 0) {
+      return (
+        <Route
+          exact
+          path='/hitters'
+          render={props => (
+            <Fragment>
+              <YearSelect getYear={this.getYear} />
+              <Hitters
+                loading={this.state.loading}
+                hitters={this.state.hitters}
+              />
+            </Fragment>
+          )}
+        />
+      );
+    }
+  };
+
   render() {
-    const { hitterSearch, hitters, loading } = this.state;
     return (
       <Router>
         <div className='App'>
@@ -62,25 +129,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
-              <Route
-                exact
-                path='/hitters'
-                render={props => (
-                  <Fragment>
-                    <Search
-                      searchHitters={this.searchHitters}
-                      clearPlayers={this.clearPlayers}
-                      showClear={hitterSearch.length > 0 ? true : false}
-                    />
-                    <HitterSearch
-                      loading={loading}
-                      hitterSearch={hitterSearch}
-                    />
-                    <YearSelect getYear={this.getYear} />
-                    <Hitters loading={loading} hitters={hitters} />
-                  </Fragment>
-                )}
-              />
+              {this.showFields()}
             </Switch>
           </div>
         </div>
