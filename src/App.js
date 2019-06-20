@@ -52,6 +52,10 @@ class App extends Component {
     this.setState({ hitterSearch: [], loading: false });
   };
 
+  clearYear = () => {
+    this.setState({ hitters: [], loading: false });
+  };
+
   showFields = () => {
     if (
       this.state.hitterSearch.length === 0 &&
@@ -72,7 +76,11 @@ class App extends Component {
                 loading={this.state.loading}
                 hitterSearch={this.state.hitterSearch}
               />
-              <YearSelect getYear={this.getYear} />
+              <YearSelect
+                getYear={this.getYear}
+                clearYear={this.clearYear}
+                showTableClear={this.state.hitters > 0 ? true : false}
+              />
               <Hitters
                 loading={this.state.loading}
                 hitters={this.state.hitters}
@@ -108,7 +116,11 @@ class App extends Component {
           path='/hitters'
           render={props => (
             <Fragment>
-              <YearSelect getYear={this.getYear} />
+              <YearSelect
+                getYear={this.getYear}
+                clearYear={this.clearYear}
+                showTableClear={this.state.hitters.length > 0 ? true : false}
+              />
               <Hitters
                 loading={this.state.loading}
                 hitters={this.state.hitters}
