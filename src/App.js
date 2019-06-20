@@ -48,6 +48,10 @@ class App extends Component {
     this.setState({ pitcherSearch: res.data, loading: false });
   };
 
+  clearPlayers = () => {
+    this.setState({ hitterSearch: [], loading: false });
+  };
+
   render() {
     return (
       <Router>
@@ -55,28 +59,7 @@ class App extends Component {
           <Navbar />
           <div className='container'>
             <Switch>
-              <Route
-                exact
-                path='/'
-                render={props => (
-                  <Fragment>
-                    <Search
-                      searchHitters={this.searchHitters}
-                      searchPitchers={this.searchPitchers}
-                    />
-
-                    <HitterSearch
-                      loading={this.state.loading}
-                      hitterSearch={this.state.hitterSearch}
-                    />
-
-                    <PitcherSearch
-                      loading={this.state.loading}
-                      pitcherSearch={this.state.pitcherSearch}
-                    />
-                  </Fragment>
-                )}
-              />
+              <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
               <Route
                 exact
@@ -85,9 +68,11 @@ class App extends Component {
                   <Fragment>
                     <Search
                       searchHitters={this.searchHitters}
-                      searchPitchers={this.searchPitchers}
+                      clearPlayers={this.clearPlayers}
+                      showClear={
+                        this.state.hitterSearch.length > 0 ? true : false
+                      }
                     />
-
                     <HitterSearch
                       loading={this.state.loading}
                       hitterSearch={this.state.hitterSearch}
