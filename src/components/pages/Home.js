@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 
-import Search from "../layout/Search";
-
 class Home extends Component {
   render() {
     return (
       <div>
-        <Search />
+        <h1>This is the Home page</h1>
       </div>
     );
   }
