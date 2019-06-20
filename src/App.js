@@ -83,6 +83,15 @@ class App extends Component {
                 path='/hitters'
                 render={props => (
                   <Fragment>
+                    <Search
+                      searchHitters={this.searchHitters}
+                      searchPitchers={this.searchPitchers}
+                    />
+
+                    <HitterSearch
+                      loading={this.state.loading}
+                      hitterSearch={this.state.hitterSearch}
+                    />
                     <YearSelect getYear={this.getYear} />
                     <Hitters
                       loading={this.state.loading}
