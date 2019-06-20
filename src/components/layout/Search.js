@@ -8,13 +8,13 @@ class Search extends Component {
 
   static propTypes = {
     searchHitters: PropTypes.func.isRequired,
-    searchPitchers: PropTypes.func.isRequired
+    clearPlayers: PropTypes.func.isRequired,
+    showClear: PropTypes.bool.isRequired
   };
 
   onSubmit = e => {
     e.preventDefault();
     this.props.searchHitters(this.state.text);
-    this.props.searchPitchers(this.state.text);
 
     this.setState({ text: "" });
   };
@@ -24,6 +24,7 @@ class Search extends Component {
   };
 
   render() {
+    const { clearPlayers, showClear } = this.props;
     return (
       <div className='my-5'>
         <form onSubmit={this.onSubmit}>
@@ -40,9 +41,14 @@ class Search extends Component {
           <input
             type='submit'
             value='Search Players'
-            className='btn btn-primary btn-block'
+            className='btn btn-primary btn-block mb-2'
           />
         </form>
+        {showClear && (
+          <button className='btn btn-block btn-light' onClick={clearPlayers}>
+            Clear Player
+          </button>
+        )}
       </div>
     );
   }
