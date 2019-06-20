@@ -7,6 +7,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 
 import Hitters from "./components/pages/hitters/Hitters";
+import HitterSearch from "./components/pages/searches/HitterSearch";
 import YearSelect from "./components/layout/YearSelect";
 import Search from "./components/layout/Search";
 
@@ -17,6 +18,8 @@ import Search from "./components/layout/Search";
 class App extends Component {
   state = {
     hitters: [],
+    hitterSearch: [],
+    pitcherSearch: [],
     loading: false
   };
 
@@ -28,14 +31,14 @@ class App extends Component {
     this.setState({ hitters: res.data, loading: false });
   };
 
-  searchPlayers = async player => {
+  searchHitters = async player => {
     this.setState({ loading: true });
 
     const res = await axios.get(
       `https://baseballapi.herokuapp.com/api/batting/players/${player}`
     );
 
-    this.setState({ hitters: res.data, loading: false });
+    this.setState({ hitterSearch: res.data, loading: false });
   };
 
   render() {
@@ -50,10 +53,10 @@ class App extends Component {
                 path='/'
                 render={props => (
                   <Fragment>
-                    <Search searchPlayers={this.searchPlayers} />
-                    <Hitters
+                    <Search searchHitters={this.searchHitters} />
+                    <HitterSearch
                       loading={this.state.loading}
-                      hitters={this.state.hitters}
+                      hitterSearch={this.state.hitterSearch}
                     />
                   </Fragment>
                 )}
