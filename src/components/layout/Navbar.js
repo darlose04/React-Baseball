@@ -52,7 +52,7 @@ class Navbar extends Component {
                 <Link to='/hitters' className='dropdown-item'>
                   Hitters
                 </Link>
-                <Link to='/starters' className='dropdown-item'>
+                <Link to='/pitchers' className='dropdown-item'>
                   Pitchers
                 </Link>
               </div>
