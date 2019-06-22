@@ -56,7 +56,7 @@ class App extends Component {
     this.setState({ hitters: [], loading: false });
   };
 
-  showFields = () => {
+  showHitterFields = () => {
     if (
       this.state.hitterSearch.length === 0 &&
       this.state.hitters.length === 0
@@ -141,7 +141,7 @@ class App extends Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
-              {this.showFields()}
+              {this.showHitterFields()}
             </Switch>
           </div>
         </div>
