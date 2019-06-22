@@ -53,10 +53,7 @@ class Navbar extends Component {
                   Hitters
                 </Link>
                 <Link to='/starters' className='dropdown-item'>
-                  Starters
-                </Link>
-                <Link to='/relievers' className='dropdown-item'>
-                  Relievers
+                  Pitchers
                 </Link>
               </div>
             </li>
