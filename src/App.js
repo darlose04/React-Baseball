@@ -6,11 +6,13 @@ import axios from "axios";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 
+import PitcherTitle from "./components/layout/titles/PitcherTitle";
+import HitterTitle from "./components/layout/titles/HitterTitle";
+
 import Hitters from "./components/pages/hitters/Hitters";
 import HitterSearch from "./components/pages/searches/HitterSearch";
 import YearSelect from "./components/layout/YearSelect";
 import Pitchers from "./components/pages/pitchers/Pitchers";
-import PitcherItem from "./components/pages/pitchers/PitcherItem";
 import PitcherSearch from "./components/pages/searches/PitcherSearch";
 import PitcherYearSelect from "./components/layout/PitcherYearSelect";
 
@@ -81,6 +83,7 @@ class App extends Component {
           path='/hitters'
           render={props => (
             <Fragment>
+              <HitterTitle />
               <Search
                 searchHitters={this.searchHitters}
                 clearPlayers={this.clearPlayers}
@@ -110,6 +113,7 @@ class App extends Component {
           path='/hitters'
           render={props => (
             <Fragment>
+              <HitterTitle />
               <Search
                 searchHitters={this.searchHitters}
                 clearPlayers={this.clearPlayers}
@@ -130,6 +134,7 @@ class App extends Component {
           path='/hitters'
           render={props => (
             <Fragment>
+              <HitterTitle />
               <YearSelect
                 getYear={this.getYear}
                 clearYear={this.clearYear}
@@ -157,6 +162,7 @@ class App extends Component {
           path='/pitchers'
           render={props => (
             <Fragment>
+              <PitcherTitle />
               <SearchPitchers
                 searchPitchers={this.searchPitchers}
                 clearPlayers={this.clearPlayers}
@@ -186,6 +192,7 @@ class App extends Component {
           path='/pitchers'
           render={props => (
             <Fragment>
+              <PitcherTitle />
               <SearchPitchers
                 searchPitchers={this.searchPitchers}
                 clearPlayers={this.clearPlayers}
@@ -206,6 +213,7 @@ class App extends Component {
           path='/pitchers'
           render={props => (
             <Fragment>
+              <PitcherTitle />
               <PitcherYearSelect
                 getPitcherYear={this.getPitcherYear}
                 clearYear={this.clearYear}
