@@ -11,6 +11,7 @@ import HitterSearch from "./components/pages/searches/HitterSearch";
 import YearSelect from "./components/layout/YearSelect";
 import Pitchers from "./components/pages/pitchers/Pitchers";
 import PitcherItem from "./components/pages/pitchers/PitcherItem";
+import PitcherYearSelect from "./components/layout/PitcherYearSelect";
 
 import Search from "./components/layout/Search";
 import PitcherSearch from "./components/pages/searches/PitcherSearch";
@@ -36,6 +37,14 @@ class App extends Component {
     this.setState({ hitters: res.data, loading: false });
   };
 
+  getPitcherYear = async year => {
+    this.setState({ loading: true });
+    const res = await axios.get(
+      `https://baseballapi.herokuapp.com/api/pitching/pitchers/${year}`
+    );
+    this.setState({ pitchers: res.data, loading: false });
+  };
+
   searchHitters = async hitter => {
     this.setState({ loading: true });
     const res = await axios.get(
@@ -53,11 +62,11 @@ class App extends Component {
   };
 
   clearPlayers = () => {
-    this.setState({ hitterSearch: [], loading: false });
+    this.setState({ hitterSearch: [], pitcherSearch: [], loading: false });
   };
 
   clearYear = () => {
-    this.setState({ hitters: [], loading: false });
+    this.setState({ hitters: [], pitchers: [], loading: false });
   };
 
   showHitterFields = () => {
@@ -136,6 +145,82 @@ class App extends Component {
     }
   };
 
+  showPitcherFields = () => {
+    if (
+      this.state.pitcherSearch.length === 0 &&
+      this.state.pitchers.length === 0
+    ) {
+      return (
+        <Route
+          exact
+          path='/pitchers'
+          render={props => (
+            <Fragment>
+              <Search
+                searchPitchers={this.searchPitchers}
+                clearPlayers={this.clearPlayers}
+                showClear={this.state.pitcherSearch.length > 0 ? true : false}
+              />
+              <PitcherSearch
+                loading={this.state.loading}
+                pitcherSearch={this.state.pitcherSearch}
+              />
+              <PitcherYearSelect
+                getPitcherYear={this.getPitcherYear}
+                clearYear={this.clearYear}
+                showTableClear={this.state.pitchers > 0 ? true : false}
+              />
+              <Pitchers
+                loading={this.state.loading}
+                pitchers={this.state.pitchers}
+              />
+            </Fragment>
+          )}
+        />
+      );
+    } else if (this.state.pitcherSearch.length > 0) {
+      return (
+        <Route
+          exact
+          path='/pitchers'
+          render={props => (
+            <Fragment>
+              <Search
+                searchPitchers={this.searchPitchers}
+                clearPlayers={this.clearPlayers}
+                showClear={this.state.pitcherSearch.length > 0 ? true : false}
+              />
+              <PitcherSearch
+                loading={this.state.loading}
+                pitcherSearch={this.state.pitcherSearch}
+              />
+            </Fragment>
+          )}
+        />
+      );
+    } else if (this.state.pitchers.length > 0) {
+      return (
+        <Route
+          exact
+          path='/pitchers'
+          render={props => (
+            <Fragment>
+              <PitcherYearSelect
+                getYear={this.getYear}
+                clearYear={this.clearYear}
+                showTableClear={this.state.pitchers.length > 0 ? true : false}
+              />
+              <Pitchers
+                loading={this.state.loading}
+                pitchers={this.state.pitchers}
+              />
+            </Fragment>
+          )}
+        />
+      );
+    }
+  };
+
   render() {
     return (
       <Router>
@@ -146,6 +231,7 @@ class App extends Component {
               <Route exact path='/' component={Home} />
               <Route exact path='/about' component={About} />
               {this.showHitterFields()}
+              {this.showPitcherFields()}
             </Switch>
           </div>
         </div>
