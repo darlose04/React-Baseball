@@ -9,6 +9,9 @@ import About from "./components/pages/About";
 import Hitters from "./components/pages/hitters/Hitters";
 import HitterSearch from "./components/pages/searches/HitterSearch";
 import YearSelect from "./components/layout/YearSelect";
+import Pitchers from "./components/pages/pitchers/Pitchers";
+import PitcherItem from "./components/pages/pitchers/PitcherItem";
+
 import Search from "./components/layout/Search";
 import PitcherSearch from "./components/pages/searches/PitcherSearch";
 
@@ -20,6 +23,7 @@ class App extends Component {
   state = {
     hitters: [],
     hitterSearch: [],
+    pitchers: [],
     pitcherSearch: [],
     loading: false
   };
