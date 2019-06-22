@@ -207,7 +207,7 @@ class App extends Component {
           render={props => (
             <Fragment>
               <PitcherYearSelect
-                getYear={this.getYear}
+                getPitcherYear={this.getPitcherYear}
                 clearYear={this.clearYear}
                 showTableClear={this.state.pitchers.length > 0 ? true : false}
               />
