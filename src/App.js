@@ -11,10 +11,11 @@ import HitterSearch from "./components/pages/searches/HitterSearch";
 import YearSelect from "./components/layout/YearSelect";
 import Pitchers from "./components/pages/pitchers/Pitchers";
 import PitcherItem from "./components/pages/pitchers/PitcherItem";
+import PitcherSearch from "./components/pages/searches/PitcherSearch";
 import PitcherYearSelect from "./components/layout/PitcherYearSelect";
 
 import Search from "./components/layout/Search";
-import PitcherSearch from "./components/pages/searches/PitcherSearch";
+import SearchPitchers from "./components/layout/SearchPitchers";
 
 // import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 
@@ -56,7 +57,7 @@ class App extends Component {
   searchPitchers = async pitcher => {
     this.setState({ loading: true });
     const res = await axios.get(
-      `https://baseballapi.herokuapp.com/api/pitching/players/${pitcher}`
+      `https://baseballapi.herokuapp.com/api/pitching/pitchers/players/${pitcher}`
     );
     this.setState({ pitcherSearch: res.data, loading: false });
   };
@@ -156,7 +157,7 @@ class App extends Component {
           path='/pitchers'
           render={props => (
             <Fragment>
-              <Search
+              <SearchPitchers
                 searchPitchers={this.searchPitchers}
                 clearPlayers={this.clearPlayers}
                 showClear={this.state.pitcherSearch.length > 0 ? true : false}
@@ -185,7 +186,7 @@ class App extends Component {
           path='/pitchers'
           render={props => (
             <Fragment>
-              <Search
+              <SearchPitchers
                 searchPitchers={this.searchPitchers}
                 clearPlayers={this.clearPlayers}
                 showClear={this.state.pitcherSearch.length > 0 ? true : false}
