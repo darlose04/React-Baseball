@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 
 import Home from "./components/pages/Home";
+import Teams from "./components/pages/teams/Teams";
+import Standings from "./components/pages/standings/Standings";
 import About from "./components/pages/About";
 
 import PitcherTitle from "./components/layout/titles/PitcherTitle";
@@ -238,6 +240,8 @@ class App extends Component {
           <div className='container'>
             <Switch>
               <Route exact path='/' component={Home} />
+              <Route exact path='/teams' component={Teams} />
+              <Route exact path='/standings' component={Standings} />
               <Route exact path='/about' component={About} />
               {this.showHitterFields()}
               {this.showPitcherFields()}
