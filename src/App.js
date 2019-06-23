@@ -34,18 +34,6 @@ const App = () => {
   const [pitcherSearch, setPitcherSearch] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const clearPlayers = () => {
-    setHitterSearch([]);
-    setPitcherSearch([]);
-    setLoading(false);
-  };
-
-  const clearYear = () => {
-    setHitters([]);
-    setPitchers([]);
-    setLoading(false);
-  };
-
   const showHitterFields = () => {
     if (hitterSearch.length === 0 && hitters.length === 0) {
       return (
@@ -55,15 +43,9 @@ const App = () => {
           render={props => (
             <Fragment>
               <HitterTitle />
-              <Search
-                clearPlayers={clearPlayers}
-                showClear={hitterSearch.length > 0 ? true : false}
-              />
+              <Search />
               <HitterSearch />
-              <YearSelect
-                clearYear={clearYear}
-                showTableClear={hitters > 0 ? true : false}
-              />
+              <YearSelect />
               <Hitters />
             </Fragment>
           )}
@@ -77,10 +59,7 @@ const App = () => {
           render={props => (
             <Fragment>
               <HitterTitle />
-              <Search
-                clearPlayers={clearPlayers}
-                showClear={hitterSearch.length > 0 ? true : false}
-              />
+              <Search />
               <HitterSearch />
             </Fragment>
           )}
@@ -94,10 +73,7 @@ const App = () => {
           render={props => (
             <Fragment>
               <HitterTitle />
-              <YearSelect
-                clearYear={clearYear}
-                showTableClear={hitters.length > 0 ? true : false}
-              />
+              <YearSelect />
               <Hitters />
             </Fragment>
           )}
@@ -115,16 +91,10 @@ const App = () => {
           render={props => (
             <Fragment>
               <PitcherTitle />
-              <SearchPitchers
-                clearPlayers={clearPlayers}
-                showClear={pitcherSearch.length > 0 ? true : false}
-              />
-              <PitcherSearch loading={loading} pitcherSearch={pitcherSearch} />
-              <PitcherYearSelect
-                clearYear={clearYear}
-                showTableClear={pitchers > 0 ? true : false}
-              />
-              <Pitchers loading={loading} pitchers={pitchers} />
+              <SearchPitchers />
+              <PitcherSearch />
+              <PitcherYearSelect />
+              <Pitchers />
             </Fragment>
           )}
         />
@@ -137,11 +107,8 @@ const App = () => {
           render={props => (
             <Fragment>
               <PitcherTitle />
-              <SearchPitchers
-                clearPlayers={clearPlayers}
-                showClear={pitcherSearch.length > 0 ? true : false}
-              />
-              <PitcherSearch loading={loading} pitcherSearch={pitcherSearch} />
+              <SearchPitchers />
+              <PitcherSearch />
             </Fragment>
           )}
         />
@@ -154,11 +121,8 @@ const App = () => {
           render={props => (
             <Fragment>
               <PitcherTitle />
-              <PitcherYearSelect
-                clearYear={clearYear}
-                showTableClear={pitchers.length > 0 ? true : false}
-              />
-              <Pitchers loading={loading} pitchers={pitchers} />
+              <PitcherYearSelect />
+              <Pitchers />
             </Fragment>
           )}
         />
