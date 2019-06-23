@@ -71,9 +71,15 @@ const StatsState = props => {
     });
   };
 
-  // Clear hitters from name search
+  // Clear players
+  const clearPlayers = () => {
+    dispatch({ type: CLEAR_PLAYERS });
+  };
 
   // Clear year
+  const clearYear = () => {
+    dispatch({ type: CLEAR_YEAR });
+  };
 
   // Set loading
   const setLoading = () => {
@@ -91,7 +97,9 @@ const StatsState = props => {
         searchHitters,
         getYear,
         getPitcherYear,
-        searchPitchers
+        searchPitchers,
+        clearPlayers,
+        clearYear
       }}
     >
       {props.children}
