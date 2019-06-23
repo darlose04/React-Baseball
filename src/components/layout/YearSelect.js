@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import StatsContext from "../../context/stats/statsContext";
 
-const YearSelect = ({ getYear, clearYear, showTableClear }) => {
+const YearSelect = ({ clearYear, showTableClear }) => {
+  const statsContext = useContext(StatsContext);
+
   const [year, setYear] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
-    getYear(year);
+    statsContext.getYear(year);
   };
 
   const onChange = e => {
     setYear(e.target.value);
   };
+
   return (
     <div className='my-3'>
       <form onSubmit={onSubmit} className='d-inline form-inline ml-auto'>
@@ -42,7 +46,6 @@ const YearSelect = ({ getYear, clearYear, showTableClear }) => {
 };
 
 YearSelect.propTypes = {
-  getYear: PropTypes.func.isRequired,
   clearYear: PropTypes.func.isRequired,
   showTableClear: PropTypes.bool.isRequired
 };
