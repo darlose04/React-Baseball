@@ -34,15 +34,6 @@ const App = () => {
   const [pitcherSearch, setPitcherSearch] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getYear = async year => {
-    setLoading(true);
-    const res = await axios.get(
-      `https://baseballapi.herokuapp.com/api/batting/${year}`
-    );
-    setHitters(res.data);
-    setLoading(false);
-  };
-
   const getPitcherYear = async year => {
     setLoading(true);
     const res = await axios.get(
@@ -88,11 +79,10 @@ const App = () => {
               />
               <HitterSearch />
               <YearSelect
-                getYear={getYear}
                 clearYear={clearYear}
                 showTableClear={hitters > 0 ? true : false}
               />
-              <Hitters loading={loading} hitters={hitters} />
+              <Hitters />
             </Fragment>
           )}
         />
@@ -123,11 +113,10 @@ const App = () => {
             <Fragment>
               <HitterTitle />
               <YearSelect
-                getYear={getYear}
                 clearYear={clearYear}
                 showTableClear={hitters.length > 0 ? true : false}
               />
-              <Hitters loading={loading} hitters={hitters} />
+              <Hitters />
             </Fragment>
           )}
         />
