@@ -11,6 +11,8 @@ import About from "./components/pages/About";
 import PitcherTitle from "./components/layout/titles/PitcherTitle";
 import HitterTitle from "./components/layout/titles/HitterTitle";
 
+import StatsState from "./context/hitters/StatsState";
+
 import Hitters from "./components/pages/hitters/Hitters";
 import HitterSearch from "./components/pages/searches/HitterSearch";
 import YearSelect from "./components/layout/YearSelect";
@@ -209,21 +211,23 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className='App'>
-        <Navbar />
-        <div className='container'>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/teams' component={Teams} />
-            <Route exact path='/standings' component={Standings} />
-            <Route exact path='/about' component={About} />
-            {showHitterFields()}
-            {showPitcherFields()}
-          </Switch>
+    <StatsState>
+      <Router>
+        <div className='App'>
+          <Navbar />
+          <div className='container'>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/teams' component={Teams} />
+              <Route exact path='/standings' component={Standings} />
+              <Route exact path='/about' component={About} />
+              {showHitterFields()}
+              {showPitcherFields()}
+            </Switch>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </StatsState>
   );
 };
 
