@@ -1,56 +1,51 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-class PitcherYearSelect extends Component {
-  state = {
-    year: ""
-  };
+const PitcherYearSelect = ({ getPitcherYear, clearYear, showTableClear }) => {
+  const [year, setYear] = useState("");
 
-  static propTypes = {
-    getPitcherYear: PropTypes.func.isRequired,
-    clearYear: PropTypes.func.isRequired,
-    showTableClear: PropTypes.bool.isRequired
-  };
-
-  onSubmit = e => {
+  const onSubmit = e => {
     e.preventDefault();
-    this.props.getPitcherYear(this.state.year);
+    getPitcherYear(year);
   };
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  const onChange = e => {
+    setYear(e.target.value);
   };
 
-  render() {
-    const { showTableClear, clearYear } = this.props;
-    return (
-      <div className='my-3'>
-        <form onSubmit={this.onSubmit} className='d-inline form-inline ml-auto'>
-          <input
-            className='form-control mr-2'
-            type='text'
-            name='year'
-            placeholder='Input Year (2014-2018)'
-            value={this.state.year}
-            onChange={this.onChange}
-          />
-          <input
-            type='submit'
-            value='Submit'
-            className='btn btn-outline-primary'
-          />
-        </form>
-        {showTableClear && (
-          <button
-            className='d-inline btn btn-outline-dark ml-2'
-            onClick={clearYear}
-          >
-            Clear
-          </button>
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div className='my-3'>
+      <form onSubmit={onSubmit} className='d-inline form-inline ml-auto'>
+        <input
+          className='form-control mr-2'
+          type='text'
+          name='year'
+          placeholder='Input Year (2014-2018)'
+          value={year}
+          onChange={onChange}
+        />
+        <input
+          type='submit'
+          value='Submit'
+          className='btn btn-outline-primary'
+        />
+      </form>
+      {showTableClear && (
+        <button
+          className='d-inline btn btn-outline-dark ml-2'
+          onClick={clearYear}
+        >
+          Clear
+        </button>
+      )}
+    </div>
+  );
+};
+
+PitcherYearSelect.propTypes = {
+  getPitcherYear: PropTypes.func.isRequired,
+  clearYear: PropTypes.func.isRequired,
+  showTableClear: PropTypes.bool.isRequired
+};
 
 export default PitcherYearSelect;
