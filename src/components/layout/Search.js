@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import StatsContext from "../../context/stats/statsContext";
 
-const Search = ({ clearPlayers, showClear }) => {
+const Search = () => {
   const statsContext = useContext(StatsContext);
 
   const [text, setText] = useState("");
@@ -37,18 +37,16 @@ const Search = ({ clearPlayers, showClear }) => {
           className='btn btn-primary btn-block mb-2'
         />
       </form>
-      {showClear && (
-        <button className='btn btn-block btn-light' onClick={clearPlayers}>
+      {statsContext.searchHitters.length > 0 && (
+        <button
+          className='btn btn-block btn-light'
+          onClick={statsContext.clearPlayers}
+        >
           Clear Player
         </button>
       )}
     </div>
   );
-};
-
-Search.propTypes = {
-  clearPlayers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired
 };
 
 export default Search;
