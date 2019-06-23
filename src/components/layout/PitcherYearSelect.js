@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import StatsContext from "../../context/stats/statsContext";
 
-const PitcherYearSelect = ({ getPitcherYear, clearYear, showTableClear }) => {
+const PitcherYearSelect = ({ clearYear, showTableClear }) => {
+  const statsContext = useContext(StatsContext);
+
   const [year, setYear] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
-    getPitcherYear(year);
+    statsContext.getPitcherYear(year);
   };
 
   const onChange = e => {
