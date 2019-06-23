@@ -5,8 +5,10 @@ import Spinner from "../../layout/Spinner";
 import PropTypes from "prop-types";
 import StatsContext from "../../../context/stats/statsContext";
 
-const HitterSearch = ({ hitterSearch, loading }) => {
+const HitterSearch = () => {
   const statsContext = useContext(StatsContext);
+
+  const { loading, hitterSearch } = statsContext;
 
   if (hitterSearch.length === 0) {
     return <div />;
@@ -54,11 +56,6 @@ const HitterSearch = ({ hitterSearch, loading }) => {
       </div>
     );
   }
-};
-
-HitterSearch.propTypes = {
-  hitterSearch: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
 };
 
 export default HitterSearch;
