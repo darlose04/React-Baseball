@@ -34,24 +34,6 @@ const App = () => {
   const [pitcherSearch, setPitcherSearch] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const getPitcherYear = async year => {
-    setLoading(true);
-    const res = await axios.get(
-      `https://baseballapi.herokuapp.com/api/pitching/pitchers/${year}`
-    );
-    setPitchers(res.data);
-    setLoading(false);
-  };
-
-  const searchPitchers = async pitcher => {
-    setLoading(true);
-    const res = await axios.get(
-      `https://baseballapi.herokuapp.com/api/pitching/pitchers/players/${pitcher}`
-    );
-    setPitcherSearch(res.data);
-    setLoading(false);
-  };
-
   const clearPlayers = () => {
     setHitterSearch([]);
     setPitcherSearch([]);
@@ -134,13 +116,11 @@ const App = () => {
             <Fragment>
               <PitcherTitle />
               <SearchPitchers
-                searchPitchers={searchPitchers}
                 clearPlayers={clearPlayers}
                 showClear={pitcherSearch.length > 0 ? true : false}
               />
               <PitcherSearch loading={loading} pitcherSearch={pitcherSearch} />
               <PitcherYearSelect
-                getPitcherYear={getPitcherYear}
                 clearYear={clearYear}
                 showTableClear={pitchers > 0 ? true : false}
               />
@@ -158,7 +138,6 @@ const App = () => {
             <Fragment>
               <PitcherTitle />
               <SearchPitchers
-                searchPitchers={searchPitchers}
                 clearPlayers={clearPlayers}
                 showClear={pitcherSearch.length > 0 ? true : false}
               />
@@ -176,7 +155,6 @@ const App = () => {
             <Fragment>
               <PitcherTitle />
               <PitcherYearSelect
-                getPitcherYear={getPitcherYear}
                 clearYear={clearYear}
                 showTableClear={pitchers.length > 0 ? true : false}
               />
