@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import Navbar from "./components/layout/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
@@ -25,14 +25,13 @@ import SearchPitchers from "./components/layout/SearchPitchers";
 
 // import "./App.css";
 
-class App extends Component {
-  state = {
-    hitters: [],
-    hitterSearch: [],
-    pitchers: [],
-    pitcherSearch: [],
-    loading: false
-  };
+const App = () => {
+  const [hitters, setHitters] = useState([]);
+  const [hitterSearch, setHitterSearch] = useState([]);
+  const [pitchers, setPitchers] = useState([]);
+  const [pitcherSearch, setPitcherSearch] = useState([]);
+  const [loading, setLoading] = useState(false);
+
 
   getYear = async year => {
     this.setState({ loading: true });
