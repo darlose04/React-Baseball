@@ -5,6 +5,8 @@ import StatsReducer from "./statsReducer";
 import {
   SEARCH_HITTERS,
   GET_HITTER_YEAR,
+  SEARCH_PITCHERS,
+  GET_PITCHER_YEAR,
   CLEAR_PLAYERS,
   CLEAR_YEAR,
   SET_LOADING
@@ -14,6 +16,8 @@ const StatsState = props => {
   const initialState = {
     hitters: [],
     hitterSearch: [],
+    pitchers: [],
+    pitcherSearch: [],
     loading: false
   };
 
@@ -43,6 +47,30 @@ const StatsState = props => {
     });
   };
 
+  // Get pitchers by year
+  const getPitcherYear = async year => {
+    setLoading();
+    const res = await axios.get(
+      `https://baseballapi.herokuapp.com/api/pitching/pitchers/${year}`
+    );
+    dispatch({
+      type: GET_PITCHER_YEAR,
+      payload: res.data
+    });
+  };
+
+  // Get pitchers by name
+  const searchPitchers = async pitcher => {
+    setLoading(true);
+    const res = await axios.get(
+      `https://baseballapi.herokuapp.com/api/pitching/pitchers/players/${pitcher}`
+    );
+    dispatch({
+      type: SEARCH_PITCHERS,
+      payload: res.data
+    });
+  };
+
   // Clear hitters from name search
 
   // Clear year
@@ -57,9 +85,13 @@ const StatsState = props => {
       value={{
         hitters: state.hitters,
         hitterSearch: state.hitterSearch,
+        pitchers: state.pitchers,
+        pitcherSearch: state.pitcherSearch,
         loading: state.loading,
         searchHitters,
-        getYear
+        getYear,
+        getPitcherYear,
+        searchPitchers
       }}
     >
       {props.children}
