@@ -16,4 +16,30 @@ const HitterState = props => {
     hitterSearch: [],
     loading: false
   };
+
+  const [state, dispatch] = useReducer(HitterReducer, initialState);
+
+  // Get hitters by year
+
+  // Search hitters by name
+
+  // Clear hitters from name search
+
+  // Clear year
+
+  // Set loading
+
+  return (
+    <HitterContext.Provider
+      value={{
+        hitters: state.hitters,
+        hitterSearch: state.hitterSearch,
+        loading: state.loading
+      }}
+    >
+      {props.children}
+    </HitterContext.Provider>
+  );
 };
+
+export default HitterState;
