@@ -28,12 +28,6 @@ import SearchPitchers from "./components/layout/SearchPitchers";
 // import "./App.css";
 
 const App = () => {
-  const [hitters, setHitters] = useState([]);
-  const [hitterSearch, setHitterSearch] = useState([]);
-  const [pitchers, setPitchers] = useState([]);
-  const [pitcherSearch, setPitcherSearch] = useState([]);
-  const [loading, setLoading] = useState(false);
-
   const showHitterFields = () => {
     if (hitterSearch.length === 0 && hitters.length === 0) {
       return (
