@@ -14,6 +14,12 @@ export default (state, action) => {
         hitterSearch: action.payload,
         loading: false
       };
+    case GET_HITTER_YEAR:
+      return {
+        ...state,
+        hitters: action.payload,
+        loading: false
+      };
     case SET_LOADING:
       return {
         ...state,
