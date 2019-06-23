@@ -47,7 +47,8 @@ const StatsState = props => {
       value={{
         hitters: state.hitters,
         hitterSearch: state.hitterSearch,
-        loading: state.loading
+        loading: state.loading,
+        searchHitters
       }}
     >
       {props.children}
