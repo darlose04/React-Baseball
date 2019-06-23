@@ -32,52 +32,56 @@ const App = () => {
   const [pitcherSearch, setPitcherSearch] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
-  getYear = async year => {
-    this.setState({ loading: true });
+  const getYear = async year => {
+    setLoading(true);
     const res = await axios.get(
       `https://baseballapi.herokuapp.com/api/batting/${year}`
     );
-    this.setState({ hitters: res.data, loading: false });
+    setHitters(res.data);
+    setLoading(false);
   };
 
-  getPitcherYear = async year => {
-    this.setState({ loading: true });
+  const getPitcherYear = async year => {
+    setLoading(true);
     const res = await axios.get(
       `https://baseballapi.herokuapp.com/api/pitching/pitchers/${year}`
     );
-    this.setState({ pitchers: res.data, loading: false });
+    setPitchers(res.data);
+    setLoading(false);
   };
 
-  searchHitters = async hitter => {
-    this.setState({ loading: true });
+  const searchHitters = async hitter => {
+    setLoading(true);
     const res = await axios.get(
       `https://baseballapi.herokuapp.com/api/batting/players/${hitter}`
     );
-    this.setState({ hitterSearch: res.data, loading: false });
+    setHitterSearch(res.data);
+    setLoading(false);
   };
 
-  searchPitchers = async pitcher => {
-    this.setState({ loading: true });
+  const searchPitchers = async pitcher => {
+    setLoading(true);
     const res = await axios.get(
       `https://baseballapi.herokuapp.com/api/pitching/pitchers/players/${pitcher}`
     );
-    this.setState({ pitcherSearch: res.data, loading: false });
+    setPitcherSearch(res.data);
+    setLoading(false);
   };
 
-  clearPlayers = () => {
-    this.setState({ hitterSearch: [], pitcherSearch: [], loading: false });
+  const clearPlayers = () => {
+    setHitterSearch([]);
+    setPitcherSearch([]);
+    setLoading(false);
   };
 
-  clearYear = () => {
-    this.setState({ hitters: [], pitchers: [], loading: false });
+  const clearYear = () => {
+    setHitters([]);
+    setPitchers([]);
+    setLoading(false);
   };
 
   showHitterFields = () => {
-    if (
-      this.state.hitterSearch.length === 0 &&
-      this.state.hitters.length === 0
-    ) {
+    if (hitterSearch.length === 0 && hitters.length === 0) {
       return (
         <Route
           exact
@@ -86,28 +90,22 @@ const App = () => {
             <Fragment>
               <HitterTitle />
               <Search
-                searchHitters={this.searchHitters}
-                clearPlayers={this.clearPlayers}
-                showClear={this.state.hitterSearch.length > 0 ? true : false}
+                searchHitters={searchHitters}
+                clearPlayers={clearPlayers}
+                showClear={hitterSearch.length > 0 ? true : false}
               />
-              <HitterSearch
-                loading={this.state.loading}
-                hitterSearch={this.state.hitterSearch}
-              />
+              <HitterSearch loading={loading} hitterSearch={hitterSearch} />
               <YearSelect
-                getYear={this.getYear}
-                clearYear={this.clearYear}
-                showTableClear={this.state.hitters > 0 ? true : false}
+                getYear={getYear}
+                clearYear={clearYear}
+                showTableClear={hitters > 0 ? true : false}
               />
-              <Hitters
-                loading={this.state.loading}
-                hitters={this.state.hitters}
-              />
+              <Hitters loading={loading} hitters={hitters} />
             </Fragment>
           )}
         />
       );
-    } else if (this.state.hitterSearch.length > 0) {
+    } else if (hitterSearch.length > 0) {
       return (
         <Route
           exact
@@ -116,19 +114,16 @@ const App = () => {
             <Fragment>
               <HitterTitle />
               <Search
-                searchHitters={this.searchHitters}
-                clearPlayers={this.clearPlayers}
-                showClear={this.state.hitterSearch.length > 0 ? true : false}
+                searchHitters={searchHitters}
+                clearPlayers={clearPlayers}
+                showClear={hitterSearch.length > 0 ? true : false}
               />
-              <HitterSearch
-                loading={this.state.loading}
-                hitterSearch={this.state.hitterSearch}
-              />
+              <HitterSearch loading={loading} hitterSearch={hitterSearch} />
             </Fragment>
           )}
         />
       );
-    } else if (this.state.hitters.length > 0) {
+    } else if (hitters.length > 0) {
       return (
         <Route
           exact
@@ -137,14 +132,11 @@ const App = () => {
             <Fragment>
               <HitterTitle />
               <YearSelect
-                getYear={this.getYear}
-                clearYear={this.clearYear}
-                showTableClear={this.state.hitters.length > 0 ? true : false}
+                getYear={getYear}
+                clearYear={clearYear}
+                showTableClear={hitters.length > 0 ? true : false}
               />
-              <Hitters
-                loading={this.state.loading}
-                hitters={this.state.hitters}
-              />
+              <Hitters loading={loading} hitters={hitters} />
             </Fragment>
           )}
         />
@@ -231,25 +223,23 @@ const App = () => {
     }
   };
 
-  render() {
-    return (
-      <Router>
-        <div className='App'>
-          <Navbar />
-          <div className='container'>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/teams' component={Teams} />
-              <Route exact path='/standings' component={Standings} />
-              <Route exact path='/about' component={About} />
-              {this.showHitterFields()}
-              {this.showPitcherFields()}
-            </Switch>
-          </div>
+  return (
+    <Router>
+      <div className='App'>
+        <Navbar />
+        <div className='container'>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/teams' component={Teams} />
+            <Route exact path='/standings' component={Standings} />
+            <Route exact path='/about' component={About} />
+            {this.showHitterFields()}
+            {this.showPitcherFields()}
+          </Switch>
         </div>
-      </Router>
-    );
-  }
-}
+      </div>
+    </Router>
+  );
+};
 
 export default App;
