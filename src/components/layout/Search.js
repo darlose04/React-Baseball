@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import StatsContext from "../../context/stats/statsContext";
 
-const Search = ({ clearPlayers, showClear, searchHitters }) => {
+const Search = ({ clearPlayers, showClear }) => {
+  const statsContext = useContext(StatsContext);
+
   const [text, setText] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
-    searchHitters(text);
+    statsContext.searchHitters(text);
 
     setText("");
   };
@@ -44,7 +47,6 @@ const Search = ({ clearPlayers, showClear, searchHitters }) => {
 };
 
 Search.propTypes = {
-  searchHitters: PropTypes.func.isRequired,
   clearPlayers: PropTypes.func.isRequired,
   showClear: PropTypes.bool.isRequired
 };
