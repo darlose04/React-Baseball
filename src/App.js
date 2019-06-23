@@ -1,26 +1,19 @@
-import React, { useState, Fragment } from "react";
+import React, { Fragment } from "react";
 import Navbar from "./components/layout/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import axios from "axios";
 
 import Home from "./components/pages/Home";
 import Teams from "./components/pages/teams/Teams";
 import Standings from "./components/pages/standings/Standings";
 import About from "./components/pages/About";
-
-import PitcherTitle from "./components/layout/titles/PitcherTitle";
-import HitterTitle from "./components/layout/titles/HitterTitle";
+import HitterPage from "./components/pages/HitterPage";
 
 import StatsState from "./context/stats/StatsState";
 
-import Hitters from "./components/pages/hitters/Hitters";
-import HitterSearch from "./components/pages/searches/HitterSearch";
-import YearSelect from "./components/layout/YearSelect";
 import Pitchers from "./components/pages/pitchers/Pitchers";
 import PitcherSearch from "./components/pages/searches/PitcherSearch";
 import PitcherYearSelect from "./components/layout/PitcherYearSelect";
 
-import Search from "./components/layout/Search";
 import SearchPitchers from "./components/layout/SearchPitchers";
 
 // import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
@@ -28,6 +21,7 @@ import SearchPitchers from "./components/layout/SearchPitchers";
 // import "./App.css";
 
 const App = () => {
+  /*
   const showHitterFields = () => {
     if (hitterSearch.length === 0 && hitters.length === 0) {
       return (
@@ -123,6 +117,7 @@ const App = () => {
       );
     }
   };
+  */
 
   return (
     <StatsState>
@@ -135,8 +130,7 @@ const App = () => {
               <Route exact path='/teams' component={Teams} />
               <Route exact path='/standings' component={Standings} />
               <Route exact path='/about' component={About} />
-              {showHitterFields()}
-              {showPitcherFields()}
+              <Route exact path='/hitters' component={HitterPage} />
             </Switch>
           </div>
         </div>
