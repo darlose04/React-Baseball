@@ -86,7 +86,7 @@ const App = () => {
                 clearPlayers={clearPlayers}
                 showClear={hitterSearch.length > 0 ? true : false}
               />
-              <HitterSearch loading={loading} hitterSearch={hitterSearch} />
+              <HitterSearch />
               <YearSelect
                 getYear={getYear}
                 clearYear={clearYear}
@@ -109,7 +109,7 @@ const App = () => {
                 clearPlayers={clearPlayers}
                 showClear={hitterSearch.length > 0 ? true : false}
               />
-              <HitterSearch loading={loading} hitterSearch={hitterSearch} />
+              <HitterSearch />
             </Fragment>
           )}
         />
