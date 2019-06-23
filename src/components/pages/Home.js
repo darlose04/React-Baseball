@@ -7,7 +7,7 @@ class Home extends Component {
       <div>
         <h2 className='mt-2'>Site Features:</h2>
         <div className='list-group'>
-          <a href='/team' className='list-group-item list-group-item-action'>
+          <a href='/teams' className='list-group-item list-group-item-action'>
             <div className='d-flex w-100 justify-content-between'>
               <h3 className='mb-1'>Teams</h3>
             </div>
@@ -46,7 +46,7 @@ class Home extends Component {
             </small>
           </a>
           <a
-            href='/standing'
+            href='/standings'
             className='list-group-item list-group-item-action'
           >
             <div className='d-flex w-100 justify-content-between'>
