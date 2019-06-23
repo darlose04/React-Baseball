@@ -34,6 +34,20 @@ export default (state, action) => {
         pitchers: action.payload,
         loading: false
       };
+    case CLEAR_PLAYERS:
+      return {
+        ...state,
+        hitterSearch: [],
+        pitcherSearch: [],
+        loading: false
+      };
+    case CLEAR_YEAR:
+      return {
+        ...state,
+        hitters: [],
+        pitchers: [],
+        loading: false
+      };
     case SET_LOADING:
       return {
         ...state,
