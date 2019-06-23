@@ -20,6 +20,16 @@ const StatsState = props => {
   const [state, dispatch] = useReducer(StatsReducer, initialState);
 
   // Get hitters by year
+  const getYear = async year => {
+    setLoading();
+    const res = await axios.get(
+      `https://baseballapi.herokuapp.com/api/batting/${year}`
+    );
+    dispatch({
+      type: GET_HITTER_YEAR,
+      payload: res.data
+    });
+  };
 
   // Search hitters by name
   const searchHitters = async hitter => {
@@ -48,7 +58,8 @@ const StatsState = props => {
         hitters: state.hitters,
         hitterSearch: state.hitterSearch,
         loading: state.loading,
-        searchHitters
+        searchHitters,
+        getYear
       }}
     >
       {props.children}
