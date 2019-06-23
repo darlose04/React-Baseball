@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import HitterSearchItem from "./HitterSearchItem";
 import Spinner from "../../layout/Spinner";
 import PropTypes from "prop-types";
+import StatsContext from "../../../context/stats/statsContext";
 
 const HitterSearch = ({ hitterSearch, loading }) => {
+  const statsContext = useContext(StatsContext);
+
   if (hitterSearch.length === 0) {
     return <div />;
   } else if (loading) {
