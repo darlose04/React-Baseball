@@ -11,7 +11,7 @@ import About from "./components/pages/About";
 import PitcherTitle from "./components/layout/titles/PitcherTitle";
 import HitterTitle from "./components/layout/titles/HitterTitle";
 
-import StatsState from "./context/hitters/StatsState";
+import StatsState from "./context/stats/StatsState";
 
 import Hitters from "./components/pages/hitters/Hitters";
 import HitterSearch from "./components/pages/searches/HitterSearch";
