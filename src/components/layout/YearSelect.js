@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import StatsContext from "../../context/stats/statsContext";
 
-const YearSelect = ({ clearYear, showTableClear }) => {
+const YearSelect = () => {
   const statsContext = useContext(StatsContext);
 
   const [year, setYear] = useState("");
@@ -33,10 +33,10 @@ const YearSelect = ({ clearYear, showTableClear }) => {
           className='btn btn-outline-primary'
         />
       </form>
-      {showTableClear && (
+      {statsContext.hitters.length > 0 && (
         <button
           className='d-inline btn btn-outline-dark ml-2'
-          onClick={clearYear}
+          onClick={statsContext.clearYear}
         >
           Clear
         </button>
@@ -44,10 +44,4 @@ const YearSelect = ({ clearYear, showTableClear }) => {
     </div>
   );
 };
-
-YearSelect.propTypes = {
-  clearYear: PropTypes.func.isRequired,
-  showTableClear: PropTypes.bool.isRequired
-};
-
 export default YearSelect;
