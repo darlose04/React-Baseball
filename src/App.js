@@ -80,7 +80,7 @@ const App = () => {
     setLoading(false);
   };
 
-  showHitterFields = () => {
+  const showHitterFields = () => {
     if (hitterSearch.length === 0 && hitters.length === 0) {
       return (
         <Route
@@ -144,11 +144,8 @@ const App = () => {
     }
   };
 
-  showPitcherFields = () => {
-    if (
-      this.state.pitcherSearch.length === 0 &&
-      this.state.pitchers.length === 0
-    ) {
+  const showPitcherFields = () => {
+    if (pitcherSearch.length === 0 && pitchers.length === 0) {
       return (
         <Route
           exact
@@ -157,28 +154,22 @@ const App = () => {
             <Fragment>
               <PitcherTitle />
               <SearchPitchers
-                searchPitchers={this.searchPitchers}
-                clearPlayers={this.clearPlayers}
-                showClear={this.state.pitcherSearch.length > 0 ? true : false}
+                searchPitchers={searchPitchers}
+                clearPlayers={clearPlayers}
+                showClear={pitcherSearch.length > 0 ? true : false}
               />
-              <PitcherSearch
-                loading={this.state.loading}
-                pitcherSearch={this.state.pitcherSearch}
-              />
+              <PitcherSearch loading={loading} pitcherSearch={pitcherSearch} />
               <PitcherYearSelect
-                getPitcherYear={this.getPitcherYear}
-                clearYear={this.clearYear}
-                showTableClear={this.state.pitchers > 0 ? true : false}
+                getPitcherYear={getPitcherYear}
+                clearYear={clearYear}
+                showTableClear={pitchers > 0 ? true : false}
               />
-              <Pitchers
-                loading={this.state.loading}
-                pitchers={this.state.pitchers}
-              />
+              <Pitchers loading={loading} pitchers={pitchers} />
             </Fragment>
           )}
         />
       );
-    } else if (this.state.pitcherSearch.length > 0) {
+    } else if (pitcherSearch.length > 0) {
       return (
         <Route
           exact
@@ -187,19 +178,16 @@ const App = () => {
             <Fragment>
               <PitcherTitle />
               <SearchPitchers
-                searchPitchers={this.searchPitchers}
-                clearPlayers={this.clearPlayers}
-                showClear={this.state.pitcherSearch.length > 0 ? true : false}
+                searchPitchers={searchPitchers}
+                clearPlayers={clearPlayers}
+                showClear={pitcherSearch.length > 0 ? true : false}
               />
-              <PitcherSearch
-                loading={this.state.loading}
-                pitcherSearch={this.state.pitcherSearch}
-              />
+              <PitcherSearch loading={loading} pitcherSearch={pitcherSearch} />
             </Fragment>
           )}
         />
       );
-    } else if (this.state.pitchers.length > 0) {
+    } else if (pitchers.length > 0) {
       return (
         <Route
           exact
@@ -208,14 +196,11 @@ const App = () => {
             <Fragment>
               <PitcherTitle />
               <PitcherYearSelect
-                getPitcherYear={this.getPitcherYear}
-                clearYear={this.clearYear}
-                showTableClear={this.state.pitchers.length > 0 ? true : false}
+                getPitcherYear={getPitcherYear}
+                clearYear={clearYear}
+                showTableClear={pitchers.length > 0 ? true : false}
               />
-              <Pitchers
-                loading={this.state.loading}
-                pitchers={this.state.pitchers}
-              />
+              <Pitchers loading={loading} pitchers={pitchers} />
             </Fragment>
           )}
         />
@@ -233,8 +218,8 @@ const App = () => {
             <Route exact path='/teams' component={Teams} />
             <Route exact path='/standings' component={Standings} />
             <Route exact path='/about' component={About} />
-            {this.showHitterFields()}
-            {this.showPitcherFields()}
+            {showHitterFields()}
+            {showPitcherFields()}
           </Switch>
         </div>
       </div>
