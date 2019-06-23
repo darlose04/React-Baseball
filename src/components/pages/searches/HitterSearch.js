@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 
 import HitterSearchItem from "./HitterSearchItem";
 import Spinner from "../../layout/Spinner";
-import PropTypes from "prop-types";
 import StatsContext from "../../../context/stats/statsContext";
 
 const HitterSearch = () => {
