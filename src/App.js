@@ -52,15 +52,6 @@ const App = () => {
     setLoading(false);
   };
 
-  const searchHitters = async hitter => {
-    setLoading(true);
-    const res = await axios.get(
-      `https://baseballapi.herokuapp.com/api/batting/players/${hitter}`
-    );
-    setHitterSearch(res.data);
-    setLoading(false);
-  };
-
   const searchPitchers = async pitcher => {
     setLoading(true);
     const res = await axios.get(

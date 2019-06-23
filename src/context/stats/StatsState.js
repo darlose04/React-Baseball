@@ -22,6 +22,14 @@ const StatsState = props => {
   // Get hitters by year
 
   // Search hitters by name
+  const searchHitters = async hitter => {
+    setLoading(true);
+    const res = await axios.get(
+      `https://baseballapi.herokuapp.com/api/batting/players/${hitter}`
+    );
+    setHitterSearch(res.data);
+    setLoading(false);
+  };
 
   // Clear hitters from name search
 
