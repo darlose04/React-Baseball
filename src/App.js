@@ -83,7 +83,6 @@ const App = () => {
             <Fragment>
               <HitterTitle />
               <Search
-                searchHitters={searchHitters}
                 clearPlayers={clearPlayers}
                 showClear={hitterSearch.length > 0 ? true : false}
               />
@@ -107,7 +106,6 @@ const App = () => {
             <Fragment>
               <HitterTitle />
               <Search
-                searchHitters={searchHitters}
                 clearPlayers={clearPlayers}
                 showClear={hitterSearch.length > 0 ? true : false}
               />
