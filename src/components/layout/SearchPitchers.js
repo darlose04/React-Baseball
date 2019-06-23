@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import StatsContext from "../../context/stats/statsContext";
 
-const PitcherSearch = ({ searchPitchers, clearPlayers, showClear }) => {
+const PitcherSearch = ({ clearPlayers, showClear }) => {
   const statsContext = useContext(StatsContext);
 
   const [text, setText] = useState("");
