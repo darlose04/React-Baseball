@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 // import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 // import BootstrapTable from "react-bootstrap-table-next";
 
 import HitterItem from "./HitterItem";
 import Spinner from "../../layout/Spinner";
-import PropTypes from "prop-types";
 
-const Hitters = ({ hitters, loading }) => {
+import StatsContext from "../../../context/stats/statsContext";
+
+const Hitters = () => {
+  const statsContext = useContext(StatsContext);
+
+  const { loading, hitters } = statsContext;
+
   if (hitters.length === 0) {
     return <div />;
   } else if (loading) {
@@ -53,11 +58,6 @@ const Hitters = ({ hitters, loading }) => {
       </div>
     );
   }
-};
-
-Hitters.propTypes = {
-  hitters: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
 };
 
 export default Hitters;

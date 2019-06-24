@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 // import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 // import BootstrapTable from "react-bootstrap-table-next";
 
 import PitcherItem from "./PitcherItem";
 import Spinner from "../../layout/Spinner";
-import PropTypes from "prop-types";
+import StatsContext from "../../../context/stats/statsContext";
 
-const Pitchers = ({ pitchers, loading }) => {
+const Pitchers = () => {
+  const statsContext = useContext(StatsContext);
+
+  const { pitchers, loading } = statsContext;
+
   if (pitchers.length === 0) {
     return <div />;
   } else if (loading) {
@@ -51,11 +55,6 @@ const Pitchers = ({ pitchers, loading }) => {
       </div>
     );
   }
-};
-
-Pitchers.propTypes = {
-  pitchers: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
 };
 
 export default Pitchers;

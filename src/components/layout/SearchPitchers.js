@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useContext } from "react";
+import StatsContext from "../../context/stats/statsContext";
 
-const PitcherSearch = ({ searchPitchers, clearPlayers, showClear }) => {
+const PitcherSearch = () => {
+  const statsContext = useContext(StatsContext);
+
   const [text, setText] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
-    searchPitchers(text);
+    statsContext.searchPitchers(text);
 
     setText("");
   };
@@ -34,19 +36,16 @@ const PitcherSearch = ({ searchPitchers, clearPlayers, showClear }) => {
           className='btn btn-primary btn-block mb-2'
         />
       </form>
-      {showClear && (
-        <button className='btn btn-block btn-light' onClick={clearPlayers}>
+      {statsContext.searchPitchers.length > 0 && (
+        <button
+          className='btn btn-block btn-light'
+          onClick={statsContext.clearPlayers}
+        >
           Clear Player
         </button>
       )}
     </div>
   );
-};
-
-PitcherSearch.propTypes = {
-  searchPitchers: PropTypes.func.isRequired,
-  clearPlayers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired
 };
 
 export default PitcherSearch;

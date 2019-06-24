@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useContext } from "react";
+import StatsContext from "../../context/stats/statsContext";
 
-const PitcherYearSelect = ({ getPitcherYear, clearYear, showTableClear }) => {
+const PitcherYearSelect = () => {
+  const statsContext = useContext(StatsContext);
+
   const [year, setYear] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
-    getPitcherYear(year);
+    statsContext.getPitcherYear(year);
   };
 
   const onChange = e => {
@@ -30,22 +32,16 @@ const PitcherYearSelect = ({ getPitcherYear, clearYear, showTableClear }) => {
           className='btn btn-outline-primary'
         />
       </form>
-      {showTableClear && (
+      {statsContext.pitchers.length > 0 && (
         <button
           className='d-inline btn btn-outline-dark ml-2'
-          onClick={clearYear}
+          onClick={statsContext.clearYear}
         >
           Clear
         </button>
       )}
     </div>
   );
-};
-
-PitcherYearSelect.propTypes = {
-  getPitcherYear: PropTypes.func.isRequired,
-  clearYear: PropTypes.func.isRequired,
-  showTableClear: PropTypes.bool.isRequired
 };
 
 export default PitcherYearSelect;

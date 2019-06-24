@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useContext } from "react";
+import StatsContext from "../../context/stats/statsContext";
 
-const YearSelect = ({ getYear, clearYear, showTableClear }) => {
+const YearSelect = () => {
+  const statsContext = useContext(StatsContext);
+
   const [year, setYear] = useState("");
 
   const onSubmit = e => {
     e.preventDefault();
-    getYear(year);
+    statsContext.getYear(year);
   };
 
   const onChange = e => {
     setYear(e.target.value);
   };
+
   return (
     <div className='my-3'>
       <form onSubmit={onSubmit} className='d-inline form-inline ml-auto'>
@@ -29,10 +32,10 @@ const YearSelect = ({ getYear, clearYear, showTableClear }) => {
           className='btn btn-outline-primary'
         />
       </form>
-      {showTableClear && (
+      {statsContext.hitters.length > 0 && (
         <button
           className='d-inline btn btn-outline-dark ml-2'
-          onClick={clearYear}
+          onClick={statsContext.clearYear}
         >
           Clear
         </button>
@@ -40,11 +43,4 @@ const YearSelect = ({ getYear, clearYear, showTableClear }) => {
     </div>
   );
 };
-
-YearSelect.propTypes = {
-  getYear: PropTypes.func.isRequired,
-  clearYear: PropTypes.func.isRequired,
-  showTableClear: PropTypes.bool.isRequired
-};
-
 export default YearSelect;

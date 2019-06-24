@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import PitcherSearchItem from "./PitcherSearchItem";
 import Spinner from "../../layout/Spinner";
-import PropTypes from "prop-types";
+import StatsContext from "../../../context/stats/statsContext";
 
-const PitcherSearch = ({ pitcherSearch, loading }) => {
+const PitcherSearch = () => {
+  const statsContext = useContext(StatsContext);
+
+  const { pitcherSearch, loading } = statsContext;
+
   if (pitcherSearch.length === 0) {
     return <div />;
   } else if (loading) {
@@ -49,11 +53,6 @@ const PitcherSearch = ({ pitcherSearch, loading }) => {
       </div>
     );
   }
-};
-
-PitcherSearch.propTypes = {
-  pitcherSearch: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
 };
 
 export default PitcherSearch;
