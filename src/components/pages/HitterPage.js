@@ -11,7 +11,7 @@ import Search from "../layout/Search";
 const HitterPage = () => {
   const statsContext = useContext(StatsContext);
 
-  const { hitterSearch, hitters, loading } = statsContext;
+  const { hitterSearch, hitters } = statsContext;
 
   if (hitterSearch.length === 0 && hitters.length === 0) {
     return (

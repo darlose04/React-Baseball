@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import axios from "axios";
 import StatsContext from "./statsContext";
 import StatsReducer from "./statsReducer";
@@ -36,6 +36,7 @@ const StatsState = props => {
   };
 
   // Search hitters by name
+
   const searchHitters = async hitter => {
     setLoading();
     const res = await axios.get(
