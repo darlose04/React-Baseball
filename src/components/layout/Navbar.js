@@ -25,7 +25,7 @@ const Navbar = () => {
           </li>
           <li className='nav-item dropdown'>
             <a
-              href='!#'
+              href='#!'
               className='nav-link dropdown-toggle text-light'
               data-toggle='dropdown'
             >
